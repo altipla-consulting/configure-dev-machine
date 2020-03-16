@@ -64,4 +64,13 @@ fi
 
 
 # ------------------------------------------------------------------------------
+function install_reloader {
+  go get -v -u github.com/altipla-consulting/reloader
+}
+
+echo ">>> update reloader..."
+install_reloader
+
+
+# ------------------------------------------------------------------------------
 echo ">>> done!"
