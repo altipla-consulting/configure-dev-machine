@@ -7,7 +7,7 @@ Configura las máquinas de desarrollo desde un script único.
 ### Run on your machine
 
 ```shell
-bash <(wget -qO- https://git.io/Jvihi)
+curl https://git.io/Jvihi | bash
 ```
 
 Reinicia la terminal cuando termine el script para aplicar los cambios.
