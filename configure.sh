@@ -48,6 +48,7 @@ function install_docker_compose {
   if [ -z "${USR_ID-}" ]; then
     echo 'export USR_ID=$(id -u)' >> ~/.bashrc
     echo 'export GRP_ID=$(id -g)' >> ~/.bashrc
+    echo "alias dc='docker-compose'" >> ~/.bashrc
   fi
 }
 
