@@ -4,11 +4,6 @@ set -eu
 
 
 # ------------------------------------------------------------------------------
-mkdir -p ~/bin
-source ~/.bashrc
-
-
-# ------------------------------------------------------------------------------
 function install_apt {
   sudo apt update
   sudo apt install -y wget tar curl
@@ -84,8 +79,8 @@ install_reloader
 
 # ------------------------------------------------------------------------------
 function install_actools {
-  curl https://tools.altipla.consulting/bin/actools > ~/bin/actools
-  chmod +x ~/bin/actools
+  sudo curl https://tools.altipla.consulting/bin/actools -o /usr/bin/actools
+  chmod +x /usr/bin/actools
 
   actools pull
 }
