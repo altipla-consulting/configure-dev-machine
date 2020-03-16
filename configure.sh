@@ -44,12 +44,6 @@ function install_docker_compose {
   sudo curl -L "https://github.com/docker/compose/releases/download/$1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   sudo chmod +x /usr/local/bin/docker-compose
   docker-compose --version
-  
-  if [ -z "${USR_ID-}" ]; then
-    echo 'export USR_ID=$(id -u)' >> ~/.bashrc
-    echo 'export GRP_ID=$(id -g)' >> ~/.bashrc
-    echo "alias dc='docker-compose'" >> ~/.bashrc
-  fi
 }
 
 WANTED_VERSION=1.25.4
@@ -61,6 +55,16 @@ CURRENT_VERSION=$(docker-compose version --short)
 if [ "$CURRENT_VERSION" != "$WANTED_VERSION" ]; then
   echo ">>> update docker-compose [$CURRENT_VERSION -> $WANTED_VERSION]..."
   install_docker_compose $WANTED_VERSION
+fi
+if [ -z "${USR_ID-}" ]; then
+  echo ">>> install dc alias..."
+  echo 'export USR_ID=$(id -u)' >> ~/.bashrc
+  echo 'export GRP_ID=$(id -g)' >> ~/.bashrc
+  echo "alias dc='docker-compose'" >> ~/.bashrc
+fi
+if ! type dcrun 2>/dev/null; then
+  echo ">>> install dcrun alias..."
+  echo "alias dcrun='docker-compose run --rm'" >> ~/.bashrc
 fi
 
 
