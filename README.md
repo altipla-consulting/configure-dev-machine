@@ -4,7 +4,7 @@
 Configura las máquinas de desarrollo desde un script único.
 
 
-### Run on your machine
+## Run on your machine
 
 ```shell
 curl https://git.io/Jvihi | bash
