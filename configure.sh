@@ -4,9 +4,14 @@ set -eu
 
 
 # ------------------------------------------------------------------------------
+mkdir -p ~/bin
+source ~/.bashrc
+
+
+# ------------------------------------------------------------------------------
 function install_apt {
   sudo apt update
-  sudo apt install -y wget tar
+  sudo apt install -y wget tar curl
 }
 
 echo ">>> update apt..."
@@ -75,6 +80,18 @@ function install_reloader {
 
 echo ">>> update reloader..."
 install_reloader
+
+
+# ------------------------------------------------------------------------------
+function install_actools {
+  curl https://tools.altipla.consulting/bin/actools > ~/bin/actools
+  chmod +x ~/bin/actools
+
+  actools pull
+}
+
+echo ">>> update actools..."
+install_actools
 
 
 # ------------------------------------------------------------------------------
