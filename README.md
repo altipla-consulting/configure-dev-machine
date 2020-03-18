@@ -7,7 +7,7 @@ Configura las máquinas de desarrollo desde un script único.
 ## Instalar las herramientas
 
 ```shell
-curl https://git.io/Jvihi | bash
+curl -L https://git.io/Jvihi | bash
 ```
 
 Reinicia la terminal cuando termine el script para aplicar los cambios.
