@@ -23,7 +23,7 @@ function install_go {
 
   if [ -z "${GOROOT-}" ]; then
     echo 'export GOROOT=/usr/local/go' >> ~/.bashrc
-    echo 'export PATH=$PATH:$GOROOT/bin' >> ~/.bashrc
+    echo 'export PATH=$PATH:$GOROOT/bin:$HOME/go/bin' >> ~/.bashrc
   fi
 }
 
