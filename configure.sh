@@ -80,7 +80,7 @@ install_reloader
 # ------------------------------------------------------------------------------
 function install_actools {
   sudo curl https://tools.altipla.consulting/bin/actools -o /usr/bin/actools
-  chmod +x /usr/bin/actools
+  sudo chmod +x /usr/bin/actools
 
   actools pull
 }
