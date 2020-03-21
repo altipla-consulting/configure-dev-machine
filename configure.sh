@@ -40,6 +40,25 @@ fi
 
 
 # ------------------------------------------------------------------------------
+function install_node {
+  curl -sL https://deb.nodesource.com/setup_${1}.x | sudo -E bash -
+  sudo apt install -y nodejs
+  node -v
+}
+
+WANTED_VERSION=12
+if ! hash node 2>/dev/null; then
+  echo ">>> install node..."
+  install_node $WANTED_VERSION
+fi
+CURRENT_VERSION=$(node -v | { IFS=. read major minor patch; echo ${major##v}; })
+if [ "$CURRENT_VERSION" != "$WANTED_VERSION" ]; then
+  echo ">>> update node [$CURRENT_VERSION -> $WANTED_VERSION]..."
+  install_node $WANTED_VERSION
+fi
+
+
+# ------------------------------------------------------------------------------
 function install_docker_compose {
   sudo curl -L "https://github.com/docker/compose/releases/download/$1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   sudo chmod +x /usr/local/bin/docker-compose
