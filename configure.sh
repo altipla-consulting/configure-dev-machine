@@ -80,9 +80,6 @@ if [ -z "${USR_ID-}" ]; then
   echo 'export USR_ID=$(id -u)' >> ~/.bashrc
   echo 'export GRP_ID=$(id -g)' >> ~/.bashrc
   echo "alias dc='docker-compose'" >> ~/.bashrc
-fi
-if ! type dcrun 2>/dev/null; then
-  echo ">>> install dcrun alias..."
   echo "alias dcrun='docker-compose run --rm'" >> ~/.bashrc
 fi
 
