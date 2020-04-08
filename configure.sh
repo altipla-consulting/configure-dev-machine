@@ -19,7 +19,7 @@ function install_go {
   wget -q -O /tmp/go.tar.gz "https://dl.google.com/go/$1.linux-amd64.tar.gz"
   sudo tar -C /usr/local -xzf /tmp/go.tar.gz
   rm /tmp/go.tar.gz
-  go version
+  /usr/local/go version
 
   if [ -z "${GOROOT-}" ]; then
     echo 'export GOROOT=/usr/local/go' >> ~/.bashrc
