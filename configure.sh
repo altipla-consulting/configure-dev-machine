@@ -6,7 +6,7 @@ set -eu
 # ------------------------------------------------------------------------------
 function install_apt {
   sudo apt update
-  sudo apt install -y wget tar curl autoconf
+  sudo apt install -y wget tar curl autoconf jq
 }
 
 echo ">>> update apt..."
