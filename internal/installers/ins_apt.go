@@ -17,9 +17,12 @@ func (ins *insApt) Check() (*CheckResult, error) {
 }
 
 func (ins *insApt) Install() error {
+	// autoconf to build sass compiler
+	// build-essential contains make
+	// libnss3-tools is for mkcert, to install certs to Chrome
 	script := `
     sudo apt update
-    sudo apt install -y wget tar curl autoconf jq git build-essential
+    sudo apt install -y wget tar curl autoconf jq git build-essential libnss3-tools
   `
 	return errors.Trace(run.Shell(script))
 }
