@@ -9,12 +9,12 @@ import (
 
 var (
 	register = []Installer{
-		// new(insApt),
-		// new(insCI),
-		// new(insGo),
-		// new(insNode),
-		// new(insDC),
-		// new(insReloader),
+		new(insApt),
+		new(insCI),
+		new(insGo),
+		new(insNode),
+		new(insDC),
+		new(insReloader),
 		new(insActools),
 	}
 
