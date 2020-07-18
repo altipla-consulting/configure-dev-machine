@@ -55,8 +55,10 @@ func (ins *insDC) Install() error {
 		script := `
       echo 'export USR_ID=$(id -u)' >> ~/.bashrc
       echo 'export GRP_ID=$(id -g)' >> ~/.bashrc
+
       echo "alias dc='docker-compose'" >> ~/.bashrc
       echo "alias dcrun='docker-compose run --rm'" >> ~/.bashrc
+			echo "alias dps='docker ps --format=\"table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}\"'" >> ~/.bashrc
     `
 		if err := run.Shell(script); err != nil {
 			return errors.Trace(err)
