@@ -19,7 +19,7 @@ func (ins *insApt) Check() (*CheckResult, error) {
 func (ins *insApt) Install() error {
 	script := `
     sudo apt update
-    sudo apt install -y wget tar curl autoconf jq
+    sudo apt install -y wget tar curl autoconf jq git build-essential
   `
 	return errors.Trace(run.Shell(script))
 }
