@@ -95,7 +95,7 @@ fi
 
 # ------------------------------------------------------------------------------
 function install_reloader {
-  go get -v -u github.com/altipla-consulting/reloader
+  go get -u github.com/altipla-consulting/reloader
 }
 
 echo ">>> update reloader..."
