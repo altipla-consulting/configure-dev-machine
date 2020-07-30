@@ -30,18 +30,17 @@ func (ins *insGcloud) Install() error {
 	}
 
 	if os.Getenv("CDM_GCLOUD") == "" {
-		script := `
-      echo 'export CDM_GCLOUD=1' >> ~/.bashrc
-      
-      echo "alias compute='gcloud compute'" >> ~/.bashrc
-   
-      export KUBE_EDITOR=gedit
-      echo "alias k='kubectl'" >> ~/.bashrc
-      echo "alias kls='kubectl config get-contexts'" >> ~/.bashrc
-      echo "alias kuse='kubectl config use-context'" >> ~/.bashrc
-      echo "alias kpods='kubectl get pods --field-selector=status.phase!=Succeeded -o wide'" >> ~/.bashrc
-      echo "alias knodes='kubectl get nodes -o wide'" >> ~/.bashrc
-   
+		r.WriteEnv("CDM_GCLOUD", "1")
+		r.WriteEnv("KUBE_EDITOR", "gedit")
+
+		r.WriteAlias("CONFMACHINE_COMPUTE", "compute", "gcloud compute")
+		r.WriteAlias("CONFMACHINE_K", "k", "kubectl")
+		r.WriteAlias("CONFMACHINE_KLS", "kls", "kubectl config get-contexts")
+		r.WriteAlias("CONFMACHINE_KUSE", "kuse", "kubectl config use-context")
+		r.WriteAlias("CONFMACHINE_KPODS", "kpods", "kubectl get pods --field-selector=status.phase!=Succeeded -o wide")
+		r.WriteAlias("CONFMACHINE_KNODES", "knodes", "kubectl get nodes -o wide")
+
+		script := ` 
       echo "source <(kubectl completion bash | sed 's/kubectl/k/g')" >> ~/.bashrc
     `
 		if err := run.Shell(script); err != nil {

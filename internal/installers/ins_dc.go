@@ -52,17 +52,12 @@ func (ins *insDC) Install() error {
 	}
 
 	if os.Getenv("USR_ID") == "" {
-		script := `
-      echo 'export USR_ID=$(id -u)' >> ~/.bashrc
-      echo 'export GRP_ID=$(id -g)' >> ~/.bashrc
+		r.WriteEnv("USR_ID", "$(id -u)")
+		r.WriteEnv("GRP_ID", "$(id -g)")
 
-      echo "alias dc='docker-compose'" >> ~/.bashrc
-      echo "alias dcrun='docker-compose run --rm'" >> ~/.bashrc
-			echo "alias dps='docker ps --format=\"table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}\"'" >> ~/.bashrc
-    `
-		if err := run.Shell(script); err != nil {
-			return errors.Trace(err)
-		}
+		r.WriteAlias("CONFMACHINE_DC", "dc", "docker-compose")
+		r.WriteAlias("CONFMACHINE_DCRUN", "dcrun", "docker-compose run --rm")
+		r.WriteAlias("CONFMACHINE_DPS", "dps", `docker ps --format=\"table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}\"`)
 	}
 
 	return nil
