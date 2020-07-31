@@ -57,8 +57,8 @@ func InteractiveCaptureOutput(name string, args ...string) (string, error) {
 }
 
 func WriteEnv(key, value string) error {
-	if os.Getenv(env) != "" {
-		return
+	if os.Getenv(key) != "" {
+		return nil
 	}
 
 	os.Setenv(key, value)

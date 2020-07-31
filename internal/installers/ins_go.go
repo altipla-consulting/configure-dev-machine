@@ -45,7 +45,7 @@ func (ins *insGo) Check() (*CheckResult, error) {
 func (ins *insGo) Install() error {
 	script := `
     sudo rm -rf /usr/local/go
-    wget -q -O /tmp/go.tar.gz "https://dl.google.com/go/$VERSION.linux-amd64.tar.gz"
+    wget -q -O /tmp/go.tar.gz "https://dl.google.com/go/go$VERSION.linux-amd64.tar.gz"
     sudo tar -C /usr/local -xzf /tmp/go.tar.gz
     rm /tmp/go.tar.gz
     /usr/local/go version
