@@ -59,13 +59,13 @@ func (ins *insDC) Install() error {
 			return errors.Trace(err)
 		}
 
-		if err := r.WriteAlias("dc", "docker-compose"); err != nil {
+		if err := r.WriteAlias("DC", "dc", "docker-compose"); err != nil {
 			return errors.Trace(err)
 		}
-		if err := r.WriteAlias("dcrun", "docker-compose run --rm"); err != nil {
+		if err := r.WriteAlias("DCRUN", "dcrun", "docker-compose run --rm"); err != nil {
 			return errors.Trace(err)
 		}
-		if err := r.WriteAlias("dps", `docker ps --format=\"table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}\"`); err != nil {
+		if err := r.WriteAlias("DPS", "dps", `docker ps --format=\"table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}\"`); err != nil {
 			return errors.Trace(err)
 		}
 	}

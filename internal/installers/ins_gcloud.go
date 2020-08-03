@@ -37,22 +37,22 @@ func (ins *insGcloud) Install() error {
 			return errors.Trace(err)
 		}
 
-		if err := r.WriteAlias("compute", "gcloud compute"); err != nil {
+		if err := r.WriteAlias("COMPUTE", "compute", "gcloud compute"); err != nil {
 			return errors.Trace(err)
 		}
-		if err := r.WriteAlias("k", "kubectl"); err != nil {
+		if err := r.WriteAlias("K", "k", "kubectl"); err != nil {
 			return errors.Trace(err)
 		}
-		if err := r.WriteAlias("kls", "kubectl config get-contexts"); err != nil {
+		if err := r.WriteAlias("KLS", "kls", "kubectl config get-contexts"); err != nil {
 			return errors.Trace(err)
 		}
-		if err := r.WriteAlias("kuse", "kubectl config use-context"); err != nil {
+		if err := r.WriteAlias("KUSE", "kuse", "kubectl config use-context"); err != nil {
 			return errors.Trace(err)
 		}
-		if err := r.WriteAlias("kpods", "kubectl get pods --field-selector=status.phase!=Succeeded -o wide"); err != nil {
+		if err := r.WriteAlias("KPODS", "kpods", "kubectl get pods --field-selector=status.phase!=Succeeded -o wide"); err != nil {
 			return errors.Trace(err)
 		}
-		if err := r.WriteAlias("knodes", "kubectl get nodes -o wide"); err != nil {
+		if err := r.WriteAlias("KNODES", "knodes", "kubectl get nodes -o wide"); err != nil {
 			return errors.Trace(err)
 		}
 
