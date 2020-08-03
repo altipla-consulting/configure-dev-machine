@@ -56,8 +56,12 @@ func (ins *insGo) Install() error {
 	}
 
 	if os.Getenv("GOROOT") == "" {
-		r.WriteEnv("GOROOT", "/usr/local/go")
-		r.WriteEnv("PATH", "$PATH:$GOROOT/bin:$HOME/go/bin")
+		if err := r.WriteEnv("GOROOT", "/usr/local/go"); err != nil {
+			return errors.Trace(err)
+		}
+		if err := r.WriteEnv("PATH", "$PATH:$GOROOT/bin:$HOME/go/bin"); err != nil {
+			return errors.Trace(err)
+		}
 	}
 
 	return nil

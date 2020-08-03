@@ -30,15 +30,31 @@ func (ins *insGcloud) Install() error {
 	}
 
 	if os.Getenv("CDM_GCLOUD") == "" {
-		r.WriteEnv("CDM_GCLOUD", "1")
-		r.WriteEnv("KUBE_EDITOR", "gedit")
+		if err := r.WriteEnv("CDM_GCLOUD", "1"); err != nil {
+			return errors.Trace(err)
+		}
+		if err := r.WriteEnv("KUBE_EDITOR", "gedit"); err != nil {
+			return errors.Trace(err)
+		}
 
-		r.WriteAlias("CONFMACHINE_COMPUTE", "compute", "gcloud compute")
-		r.WriteAlias("CONFMACHINE_K", "k", "kubectl")
-		r.WriteAlias("CONFMACHINE_KLS", "kls", "kubectl config get-contexts")
-		r.WriteAlias("CONFMACHINE_KUSE", "kuse", "kubectl config use-context")
-		r.WriteAlias("CONFMACHINE_KPODS", "kpods", "kubectl get pods --field-selector=status.phase!=Succeeded -o wide")
-		r.WriteAlias("CONFMACHINE_KNODES", "knodes", "kubectl get nodes -o wide")
+		if err := r.WriteAlias("compute", "gcloud compute"); err != nil {
+			return errors.Trace(err)
+		}
+		if err := r.WriteAlias("k", "kubectl"); err != nil {
+			return errors.Trace(err)
+		}
+		if err := r.WriteAlias("kls", "kubectl config get-contexts"); err != nil {
+			return errors.Trace(err)
+		}
+		if err := r.WriteAlias("kuse", "kubectl config use-context"); err != nil {
+			return errors.Trace(err)
+		}
+		if err := r.WriteAlias("kpods", "kubectl get pods --field-selector=status.phase!=Succeeded -o wide"); err != nil {
+			return errors.Trace(err)
+		}
+		if err := r.WriteAlias("knodes", "kubectl get nodes -o wide"); err != nil {
+			return errors.Trace(err)
+		}
 
 		script := ` 
       echo "source <(kubectl completion bash | sed 's/kubectl/k/g')" >> ~/.bashrc

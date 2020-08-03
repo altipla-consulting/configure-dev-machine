@@ -84,7 +84,8 @@ func WriteEnv(key, value string) error {
 	return nil
 }
 
-func WriteAlias(env, key, value string) error {
+func WriteAlias(key, value string) error {
+	env := fmt.Sprintf("CONFMACHINE_%s", strings.ToUpper(key))
 	if os.Getenv(env) != "" {
 		return nil
 	}
