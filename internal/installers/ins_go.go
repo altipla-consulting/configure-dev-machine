@@ -48,7 +48,7 @@ func (ins *insGo) Install() error {
     wget -q -O /tmp/go.tar.gz "https://dl.google.com/go/go$VERSION.linux-amd64.tar.gz"
     sudo tar -C /usr/local -xzf /tmp/go.tar.gz
     rm /tmp/go.tar.gz
-    /usr/local/go version
+    /usr/local/go/bin/go version
   `
 	vars := map[string]string{"VERSION": wantedGo}
 	if err := run.Shell(script, vars); err != nil {
