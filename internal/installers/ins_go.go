@@ -11,7 +11,7 @@ import (
 	"github.com/altipla-consulting/configure-dev-machine/internal/run"
 )
 
-const wantedGo = "1.13.8"
+const wantedGo = "1.14.7"
 
 type insGo struct{}
 
