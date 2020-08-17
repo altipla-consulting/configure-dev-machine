@@ -34,7 +34,7 @@ func (ins *insStern) Check() (*CheckResult, error) {
 		log.WithFields(log.Fields{
 			"wanted": wantedStern,
 			"found":  version,
-		}).Info("update go")
+		}).Info("update stern")
 
 		return NeedsInstall, nil
 	}
@@ -43,8 +43,9 @@ func (ins *insStern) Check() (*CheckResult, error) {
 
 func (ins *insStern) Install() error {
 	script := `
-    curl -L -o ~/bin/stern https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64
+		curl -L -o ~/bin/stern https://github.com/wercker/stern/releases/download/$VERSION/stern_linux_amd64
     chmod +x ~/bin/stern
-  `
-	return errors.Trace(run.Shell(script))
+	`
+	vars := map[string]string{"VERSION": wantedStern}
+	return errors.Trace(run.Shell(script, vars))
 }

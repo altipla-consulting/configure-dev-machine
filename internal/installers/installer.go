@@ -34,9 +34,13 @@ type CheckResult struct {
 	Install bool
 }
 
-func Run() error {
+func Run(filter string) error {
 	fmt.Println()
 	for _, installer := range register {
+		if filter != "" && installer.Name() != filter {
+			continue
+		}
+
 		log.Info("======================================================================")
 		log.Info(">>> install ", installer.Name())
 		log.Info("======================================================================")
