@@ -1,0 +1,50 @@
+package installers
+
+import (
+	"os/exec"
+	"strings"
+
+	"libs.altipla.consulting/errors"
+
+	"github.com/altipla-consulting/configure-dev-machine/internal/run"
+	log "github.com/sirupsen/logrus"
+)
+
+const wantedStern = "1.11.0"
+
+type insStern struct{}
+
+func (ins *insStern) Name() string {
+	return "stern"
+}
+
+func (ins *insStern) Check() (*CheckResult, error) {
+	if _, err := exec.LookPath("stern"); err != nil {
+		log.Info("not found")
+		return NeedsInstall, nil
+	}
+
+	output, err := run.InteractiveCaptureOutput("stern", "-v")
+	if err != nil {
+		return nil, errors.Trace(err)
+	}
+	version := strings.Split(output, " ")[2]
+
+	if version != wantedStern {
+		log.WithFields(log.Fields{
+			"wanted": wantedStern,
+			"found":  version,
+		}).Info("update go")
+
+		return NeedsInstall, nil
+	}
+	return nil, nil
+}
+
+func (ins *insStern) Install() error {
+	script := `
+    curl -L -o ~/bin/stern https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64
+    chmod +x ~/bin/stern
+  `
+	return errors.Trace(run.Shell(script))
+}

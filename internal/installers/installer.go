@@ -18,6 +18,7 @@ var (
 		new(insActools),
 		new(insGcloud),
 		new(insMkcert),
+		new(insStern),
 	}
 
 	NeedsInstall = &CheckResult{Install: true}
