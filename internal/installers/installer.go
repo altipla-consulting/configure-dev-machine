@@ -19,6 +19,7 @@ var (
 		new(insGcloud),
 		new(insMkcert),
 		new(insStern),
+		new(insJnet),
 	}
 
 	NeedsInstall = &CheckResult{Install: true}
