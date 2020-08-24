@@ -57,8 +57,8 @@ func InteractiveCaptureOutput(name string, args ...string) (string, error) {
 }
 
 func WriteEnv(key, value string) error {
-	if os.Getenv(env) != "" {
-		return
+	if os.Getenv(key) != "" {
+		return nil
 	}
 
 	os.Setenv(key, value)
@@ -85,7 +85,7 @@ func WriteEnv(key, value string) error {
 }
 
 func WriteAlias(env, key, value string) error {
-	env := fmt.Sprintf("CONFMACHINE_%s", env)
+	env = fmt.Sprintf("CONFMACHINE_%s", env)
 	if os.Getenv(env) != "" {
 		return nil
 	}

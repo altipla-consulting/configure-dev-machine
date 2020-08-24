@@ -1,8 +1,6 @@
 package installers
 
 import (
-	"os"
-
 	"libs.altipla.consulting/errors"
 
 	"github.com/altipla-consulting/configure-dev-machine/internal/run"
@@ -29,39 +27,37 @@ func (ins *insGcloud) Install() error {
 		return errors.Trace(err)
 	}
 
-	if os.Getenv("CDM_GCLOUD") == "" {
-		if err := r.WriteEnv("CDM_GCLOUD", "1"); err != nil {
-			return errors.Trace(err)
-		}
-		if err := r.WriteEnv("KUBE_EDITOR", "gedit"); err != nil {
-			return errors.Trace(err)
-		}
+	if err := run.WriteEnv("CDM_GCLOUD", "1"); err != nil {
+		return errors.Trace(err)
+	}
+	if err := run.WriteEnv("KUBE_EDITOR", "gedit"); err != nil {
+		return errors.Trace(err)
+	}
 
-		if err := r.WriteAlias("COMPUTE", "compute", "gcloud compute"); err != nil {
-			return errors.Trace(err)
-		}
-		if err := r.WriteAlias("K", "k", "kubectl"); err != nil {
-			return errors.Trace(err)
-		}
-		if err := r.WriteAlias("KLS", "kls", "kubectl config get-contexts"); err != nil {
-			return errors.Trace(err)
-		}
-		if err := r.WriteAlias("KUSE", "kuse", "kubectl config use-context"); err != nil {
-			return errors.Trace(err)
-		}
-		if err := r.WriteAlias("KPODS", "kpods", "kubectl get pods --field-selector=status.phase!=Succeeded -o wide"); err != nil {
-			return errors.Trace(err)
-		}
-		if err := r.WriteAlias("KNODES", "knodes", "kubectl get nodes -o wide"); err != nil {
-			return errors.Trace(err)
-		}
+	if err := run.WriteAlias("COMPUTE", "compute", "gcloud compute"); err != nil {
+		return errors.Trace(err)
+	}
+	if err := run.WriteAlias("K", "k", "kubectl"); err != nil {
+		return errors.Trace(err)
+	}
+	if err := run.WriteAlias("KLS", "kls", "kubectl config get-contexts"); err != nil {
+		return errors.Trace(err)
+	}
+	if err := run.WriteAlias("KUSE", "kuse", "kubectl config use-context"); err != nil {
+		return errors.Trace(err)
+	}
+	if err := run.WriteAlias("KPODS", "kpods", "kubectl get pods --field-selector=status.phase!=Succeeded -o wide"); err != nil {
+		return errors.Trace(err)
+	}
+	if err := run.WriteAlias("KNODES", "knodes", "kubectl get nodes -o wide"); err != nil {
+		return errors.Trace(err)
+	}
 
-		script := ` 
+	script = ` 
       echo "source <(kubectl completion bash | sed 's/kubectl/k/g')" >> ~/.bashrc
     `
-		if err := run.Shell(script); err != nil {
-			return errors.Trace(err)
-		}
+	if err := run.Shell(script); err != nil {
+		return errors.Trace(err)
 	}
 
 	return nil

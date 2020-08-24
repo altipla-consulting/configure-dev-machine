@@ -1,7 +1,6 @@
 package installers
 
 import (
-	"os"
 	"os/exec"
 
 	log "github.com/sirupsen/logrus"
@@ -51,23 +50,21 @@ func (ins *insDC) Install() error {
 		return errors.Trace(err)
 	}
 
-	if os.Getenv("USR_ID") == "" {
-		if err := r.WriteEnv("USR_ID", "$(id -u)"); err != nil {
-			return errors.Trace(err)
-		}
-		if err := r.WriteEnv("GRP_ID", "$(id -g)"); err != nil {
-			return errors.Trace(err)
-		}
+	if err := run.WriteEnv("USR_ID", "$(id -u)"); err != nil {
+		return errors.Trace(err)
+	}
+	if err := run.WriteEnv("GRP_ID", "$(id -g)"); err != nil {
+		return errors.Trace(err)
+	}
 
-		if err := r.WriteAlias("DC", "dc", "docker-compose"); err != nil {
-			return errors.Trace(err)
-		}
-		if err := r.WriteAlias("DCRUN", "dcrun", "docker-compose run --rm"); err != nil {
-			return errors.Trace(err)
-		}
-		if err := r.WriteAlias("DPS", "dps", `docker ps --format=\"table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}\"`); err != nil {
-			return errors.Trace(err)
-		}
+	if err := run.WriteAlias("DC", "dc", "docker-compose"); err != nil {
+		return errors.Trace(err)
+	}
+	if err := run.WriteAlias("DCRUN", "dcrun", "docker-compose run --rm"); err != nil {
+		return errors.Trace(err)
+	}
+	if err := run.WriteAlias("DPS", "dps", `docker ps --format=\"table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}\"`); err != nil {
+		return errors.Trace(err)
 	}
 
 	return nil
