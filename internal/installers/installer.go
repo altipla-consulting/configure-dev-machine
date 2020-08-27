@@ -20,6 +20,7 @@ var (
 		new(insMkcert),
 		new(insStern),
 		new(insJnet),
+		new(insEnospc),
 	}
 
 	NeedsInstall = &CheckResult{Install: true}
