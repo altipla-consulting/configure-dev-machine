@@ -45,7 +45,10 @@ func (ins *insNode) Install() error {
 	script := `
     curl -sL https://deb.nodesource.com/setup_$VERSION.x | sudo -E bash -
     sudo apt install -y nodejs
-    node -v
+	node -v
+	
+	echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+	sysctl --system
   `
 	vars := map[string]string{"VERSION": wantedNode}
 	return errors.Trace(run.Shell(script, vars))
