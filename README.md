@@ -21,7 +21,11 @@ Si es la primera vez que ejecutas el comando y no tenías Docker instalado reini
 - **[apt](https://packages.ubuntu.com/)**: Paquetes o comandos necesarios en el sistema para funcionar correctamente.
 - **[ci](https://github.com/altipla-consulting/ci)**: Ayuda para subir commits a revisión y otras tareas de Git durante el desarrollo.
 - **[docker-compose](https://docs.docker.com/compose/)**: Para ejecutar varios contenedores concurrentemente y coordinados en la máquina local.
+- **[enospc](https://stackoverflow.com/questions/22475849/node-js-what-is-enospc-error-and-how-to-solve)**: Configura el kernel para evitar el error típico al observar cambios en los ficheros locales.
+- **[gcloud](https://cloud.google.com/sdk)**: Incluyendo programas como `kubectl` y su alias a `k`.
 - **[go](https://golang.org/)**: En la versión concreta que necesitamos. Se instala en `/usr/local/go` como es típico y `GOPATH` apuntará a `~/go`, que es donde se guardarán los programas que se instalan manualmente o la caché de paquetes. Los proyectos se pueden tener donde queramos con los nuevos Go Modules.
+- **[jnet](https://github.com/altipla-consulting/jnet)**: Compilador de JSONNET a JSON para las configuraciones de Kubernetes.
 - **[mkcert](https://github.com/FiloSottile/mkcert)**: Genera certificados HTTPS en local para el desarrollo, que solo son válidos en la máquina que los genera.
 - **[node](https://nodejs.org/en/)**: Ejecuta ficheros escritos en Javascript.
 - **[reloader](https://github.com/altipla-consulting/reloader)**: Ayuda a re-ejecutar programas o tests de Go automáticamente cuando cambien los ficheros.
+- **[stern](https://github.com/wercker/stern)**: Emite los logs de una app de Kubernetes y se queda escuchando a las nuevas líneas que van surgiendo.
