@@ -21,6 +21,7 @@ var (
 		new(insStern),
 		new(insJnet),
 		new(insEnospc),
+		new(insNpmpackages),
 	}
 
 	NeedsInstall = &CheckResult{Install: true}
