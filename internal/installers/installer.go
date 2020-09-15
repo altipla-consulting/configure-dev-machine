@@ -21,6 +21,7 @@ var (
 		new(insStern),
 		new(insJnet),
 		new(insEnospc),
+		new(insIPV4Forwarding),
 		new(insNpmpackages),
 	}
 
