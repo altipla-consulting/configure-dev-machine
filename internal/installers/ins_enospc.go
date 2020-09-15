@@ -18,8 +18,8 @@ func (ins *insEnospc) Check() (*CheckResult, error) {
 
 func (ins *insEnospc) Install() error {
 	script := `
-    	echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-	sudo sysctl --system
-  	`
+		sudo sysctl -w fs.inotify.max_user_watches=524288
+		sudo sysctl --system
+  `
 	return errors.Trace(run.Shell(script))
 }

@@ -8,4 +8,3 @@ curl -L -o /tmp/configure-dev-machine $(curl --silent 'https://api.github.com/re
 chmod +x /tmp/configure-dev-machine
 
 /tmp/configure-dev-machine install
-
