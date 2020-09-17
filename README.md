@@ -7,7 +7,7 @@ Configura las máquinas de desarrollo desde un script único.
 ## Instalar las herramientas
 
 ```shell
-curl -L https://git.io/JJn6D | bash
+curl https://tools.altipla.consulting/install/configure-dev-machine | bash
 ```
 
 Reinicia la terminal cuando termine el script para aplicar los cambios.
