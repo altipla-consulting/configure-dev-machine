@@ -17,6 +17,7 @@ Si es la primera vez que ejecutas el comando y no tenías Docker instalado reini
 
 ## Herramientas que instala
 
+- **[az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)**: La línea de comandos de Azure para administrar los servicios de los clientes que lo usan.
 - **[actools](https://github.com/altipla-consulting/actools)**: Herramientas internas de Altipla Consulting que usamos para ejecutar contenedores en local.
 - **[apt](https://packages.ubuntu.com/)**: Paquetes o comandos necesarios en el sistema para funcionar correctamente.
 - **[ci](https://github.com/altipla-consulting/ci)**: Ayuda para subir commits a revisión y otras tareas de Git durante el desarrollo.

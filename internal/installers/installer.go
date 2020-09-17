@@ -23,6 +23,7 @@ var (
 		new(insEnospc),
 		new(insIPV4Forwarding),
 		new(insNpmpackages),
+		new(insAZ),
 	}
 
 	NeedsInstall = &CheckResult{Install: true}
