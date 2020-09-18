@@ -9,7 +9,7 @@ GOOGLE_PROJECT=altipla-tools
 configure-google-cloud
 
 mkdir -p tmp
-run "go build -out tmp/configure-dev-machine -ldflags=\"-X 'main.Version=$(build-tag)'\" ./cmd/configure-dev-machine"
+run "go build -o tmp/configure-dev-machine -ldflags=\"-X 'main.Version=$(build-tag)'\" ./cmd/configure-dev-machine"
 run "gsutil -h 'Cache-Control: no-cache' cp tmp/configure-dev-machine gs://tools.altipla.consulting/bin/configure-dev-machine"
 
 run "echo $(build-tag) > tmp/version"
