@@ -3,7 +3,7 @@
 set -eu
 
 mkdir -p ~/bin
-source ~/.bashrc
+export PATH=$PATH:$HOME/bin
 
 curl https://tools.altipla.consulting/bin/configure-dev-machine > ~/bin/configure-dev-machine
 chmod +x ~/bin/configure-dev-machine
