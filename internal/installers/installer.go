@@ -24,6 +24,7 @@ var (
 		new(insIPV4Forwarding),
 		new(insNpmpackages),
 		new(insAZ),
+		new(insUpdater),
 	}
 
 	NeedsInstall = &CheckResult{Install: true}
