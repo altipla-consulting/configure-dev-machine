@@ -1,8 +1,9 @@
 package main
 
 import (
-	log "github.com/sirupsen/logrus"
+	"github.com/logrusorgru/aurora"
 	"github.com/spf13/cobra"
+	"libs.altipla.consulting/box"
 )
 
 func init() {
@@ -13,11 +14,10 @@ var CmdUpdate = &cobra.Command{
 	Use:   "update",
 	Short: "Imprime el comando de actualización de la herramienta.",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		log.Info()
-		log.Info("Ejecuta el siguiente comando para actualizar e instalar la última versión:")
-		log.Info()
-		log.Info("\tcurl https://tools.altipla.consulting/install/configure-dev-machine | bash")
-		log.Info()
+		o := box.Box{}
+		o.AddLine("Run the following command to update:")
+		o.AddLine(aurora.Blue("https://tools.altipla.consulting/install/configure-dev-machine | bash"))
+		o.Render()
 
 		return nil
 	},

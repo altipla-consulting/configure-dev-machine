@@ -8,8 +8,9 @@ import (
 	"strings"
 	"time"
 
-	log "github.com/sirupsen/logrus"
+	"github.com/logrusorgru/aurora"
 	"github.com/spf13/cobra"
+	"libs.altipla.consulting/box"
 	"libs.altipla.consulting/errors"
 )
 
@@ -61,13 +62,12 @@ var CmdCheckUpdates = &cobra.Command{
 			expected := strings.TrimSpace(string(body))
 
 			if expected != Version {
-				log.WithFields(log.Fields{"current": Version, "latest": expected}).Error("configure-dev-machine has been updated")
-
-				log.Warning()
-				log.Warning("Run the following command to install the latest version:")
-				log.Warning()
-				log.Warning("\tcurl https://tools.altipla.consulting/install/configure-dev-machine | bash")
-				log.Warning()
+				o := box.Box{}
+				o.AddLine("Update available ", aurora.Gray(18, Version), " → ", aurora.BrightGreen(expected))
+				o.AddLine()
+				o.AddLine("Run the following command to update:")
+				o.AddLine(aurora.Blue("https://tools.altipla.consulting/install/configure-dev-machine | bash"))
+				o.Render()
 
 				return nil
 			}
