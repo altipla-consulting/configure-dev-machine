@@ -66,7 +66,7 @@ var CmdCheckUpdates = &cobra.Command{
 				o.AddLine("Update available ", aurora.Gray(18, Version), " → ", aurora.BrightGreen(expected))
 				o.AddLine()
 				o.AddLine("Run the following command to update:")
-				o.AddLine(aurora.Blue("https://tools.altipla.consulting/install/configure-dev-machine | bash"))
+				o.AddLine(aurora.Blue("curl https://tools.altipla.consulting/install/configure-dev-machine | bash"))
 				o.Render()
 
 				return nil
