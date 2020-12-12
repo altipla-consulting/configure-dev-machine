@@ -21,11 +21,11 @@ func (ins *insAZ) Install() error {
 		source /etc/os-release
 
 		sudo apt-get update
-		sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
+		sudo apt-get install -y ca-certificates curl apt-transport-https lsb-release gnupg
 		curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
 		echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 		sudo apt-get update
-		sudo apt-get install azure-cli
+		sudo apt-get install -y azure-cli
   `
 	if err := run.Shell(script); err != nil {
 		return errors.Trace(err)
