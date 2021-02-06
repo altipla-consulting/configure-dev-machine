@@ -26,3 +26,7 @@ func (ins *insApt) Install() error {
   `
 	return errors.Trace(run.Shell(script))
 }
+
+func (ins *insApt) BashRC() string {
+	return ""
+}

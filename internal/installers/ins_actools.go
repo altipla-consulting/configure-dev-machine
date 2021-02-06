@@ -25,3 +25,7 @@ func (ins *insActools) Install() error {
   `
 	return errors.Trace(run.Shell(script))
 }
+
+func (ins *insActools) BashRC() string {
+	return ""
+}

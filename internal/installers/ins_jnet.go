@@ -24,3 +24,7 @@ func (ins *insJnet) Install() error {
   `
 	return errors.Trace(run.Shell(script))
 }
+
+func (ins *insJnet) BashRC() string {
+	return ""
+}

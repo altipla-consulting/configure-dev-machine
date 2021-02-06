@@ -33,3 +33,7 @@ func (ins *insAZ) Install() error {
 
 	return nil
 }
+
+func (ins *insAZ) BashRC() string {
+	return ""
+}

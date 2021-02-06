@@ -50,3 +50,7 @@ func (ins *insNode) Install() error {
 	vars := map[string]string{"VERSION": wantedNode}
 	return errors.Trace(run.Shell(script, vars))
 }
+
+func (ins *insNode) BashRC() string {
+	return ""
+}

@@ -49,3 +49,7 @@ func (ins *insStern) Install() error {
 	vars := map[string]string{"VERSION": wantedStern}
 	return errors.Trace(run.Shell(script, vars))
 }
+
+func (ins *insStern) BashRC() string {
+	return ""
+}

@@ -1,7 +1,6 @@
 package installers
 
 import (
-	"os"
 	"os/exec"
 
 	log "github.com/sirupsen/logrus"
@@ -51,19 +50,16 @@ func (ins *insDC) Install() error {
 		return errors.Trace(err)
 	}
 
-	if os.Getenv("USR_ID") == "" {
-		script := `
-      echo 'export USR_ID=$(id -u)' >> ~/.bashrc
-      echo 'export GRP_ID=$(id -g)' >> ~/.bashrc
-
-      echo "alias dc='docker-compose'" >> ~/.bashrc
-      echo "alias dcrun='docker-compose run --rm'" >> ~/.bashrc
-			echo "alias dps='docker ps --format=\"table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}\"'" >> ~/.bashrc
-    `
-		if err := run.Shell(script); err != nil {
-			return errors.Trace(err)
-		}
-	}
-
 	return nil
+}
+
+func (ins *insDC) BashRC() string {
+	return `
+export USR_ID=$(id -u)
+export GRP_ID=$(id -g)
+
+alias dc='docker-compose'
+alias dcrun='docker-compose run --rm'
+alias dps='docker ps --format="table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}"'
+	`
 }

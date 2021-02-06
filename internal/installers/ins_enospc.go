@@ -35,3 +35,7 @@ func (ins *insEnospc) Install() error {
   `
 	return errors.Trace(run.Shell(script))
 }
+
+func (ins *insEnospc) BashRC() string {
+	return ""
+}

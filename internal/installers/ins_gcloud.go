@@ -51,3 +51,18 @@ func (ins *insGcloud) Install() error {
 
 	return nil
 }
+
+func (ins *insGcloud) BashRC() string {
+	return `
+alias compute='gcloud compute'
+
+export KUBE_EDITOR=nano
+alias k='kubectl'
+alias kls='kubectl config get-contexts'
+alias kuse='kubectl config use-context'
+alias kpods='kubectl get pods --field-selector=status.phase!=Succeeded -o wide'
+alias knodes='kubectl get nodes -o wide'
+
+source <(kubectl completion bash | sed 's/kubectl/k/g')
+`
+}

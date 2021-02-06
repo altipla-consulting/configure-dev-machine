@@ -4,10 +4,10 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"path/filepath"
 	"strings"
 	"time"
 
+	"github.com/altipla-consulting/configure-dev-machine/internal/config"
 	"github.com/logrusorgru/aurora"
 	"github.com/spf13/cobra"
 	"libs.altipla.consulting/box"
@@ -27,13 +27,8 @@ var CmdCheckUpdates = &cobra.Command{
 			return nil
 		}
 
-		configdir, err := os.UserConfigDir()
+		filename, err := config.Filename("last-update-check.txt")
 		if err != nil {
-			return errors.Trace(err)
-		}
-		filename := filepath.Join(configdir, "configure-dev-machine", "last-update-check.txt")
-
-		if err := os.MkdirAll(filepath.Dir(filename), 0700); err != nil {
 			return errors.Trace(err)
 		}
 

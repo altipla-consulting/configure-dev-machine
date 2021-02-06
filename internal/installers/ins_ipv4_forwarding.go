@@ -35,3 +35,7 @@ func (ins *insIPV4Forwarding) Install() error {
   `
 	return errors.Trace(run.Shell(script))
 }
+
+func (ins *insIPV4Forwarding) BashRC() string {
+	return ""
+}

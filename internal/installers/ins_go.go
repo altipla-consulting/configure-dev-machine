@@ -1,7 +1,6 @@
 package installers
 
 import (
-	"os"
 	"os/exec"
 	"strings"
 
@@ -55,15 +54,12 @@ func (ins *insGo) Install() error {
 		return errors.Trace(err)
 	}
 
-	if os.Getenv("GOROOT") == "" {
-		script := `
-      echo 'export GOROOT=/usr/local/go' >> ~/.bashrc
-      echo 'export PATH=$PATH:$GOROOT/bin:$HOME/go/bin' >> ~/.bashrc
-    `
-		if err := run.Shell(script); err != nil {
-			return errors.Trace(err)
-		}
-	}
-
 	return nil
+}
+
+func (ins *insGo) BashRC() string {
+	return `
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin:$HOME/go/bin
+`
 }

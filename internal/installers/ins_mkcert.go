@@ -24,3 +24,7 @@ func (ins *insMkcert) Install() error {
   `
 	return errors.Trace(run.Shell(script))
 }
+
+func (ins *insMkcert) BashRC() string {
+	return ""
+}

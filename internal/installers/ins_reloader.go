@@ -23,3 +23,7 @@ func (ins *insReloader) Install() error {
   `
 	return errors.Trace(run.Shell(script))
 }
+
+func (ins *insReloader) BashRC() string {
+	return ""
+}
