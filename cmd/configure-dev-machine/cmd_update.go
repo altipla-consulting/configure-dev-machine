@@ -16,7 +16,7 @@ var CmdUpdate = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		o := box.Box{}
 		o.AddLine("Run the following command to update:")
-		o.AddLine(aurora.Blue("https://tools.altipla.consulting/install/configure-dev-machine | bash"))
+		o.AddLine(aurora.Blue("curl https://tools.altipla.consulting/install/configure-dev-machine | bash"))
 		o.Render()
 
 		return nil
