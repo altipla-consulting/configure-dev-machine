@@ -21,7 +21,7 @@ func (ins *insNpmpackages) Install() error {
 	// the next packages to miss the files npm itself needs because of the update.
 	script := `
 		sudo npm install -g npm@latest
-		sudo npm install -g yarn@latest netlify-cli@latest
+		sudo npm install -g yarn@latest
   `
 	return errors.Trace(run.Shell(script))
 }
