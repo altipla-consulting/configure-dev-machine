@@ -9,7 +9,7 @@ import (
 type insTools struct{}
 
 func (ins *insTools) Name() string {
-	return "reloader"
+	return "tools"
 }
 
 func (ins *insTools) Check() (*CheckResult, error) {
