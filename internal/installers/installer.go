@@ -89,6 +89,9 @@ func Run(filter string) error {
 	if err != nil {
 		return errors.Trace(err)
 	}
+	if err := os.MkdirAll(filepath.Dir(filename), 0700); err != nil {
+		return errors.Trace(err)
+	}
 	if err := ioutil.WriteFile(filename, []byte(strings.Join(bashrc, "\n")), 0700); err != nil {
 		return errors.Trace(err)
 	}
