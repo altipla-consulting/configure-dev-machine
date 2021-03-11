@@ -20,7 +20,7 @@ var (
 		new(insGo),
 		new(insNode),
 		new(insDC),
-		new(insReloader),
+		new(insTools),
 		new(insActools),
 		new(insGcloud),
 		new(insMkcert),
